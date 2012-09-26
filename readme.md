@@ -1,7 +1,7 @@
 objective-c implementation of radix tree
 ---------------
 
-[Radix tree] are very usual data structure to preform a radix search.  
+[Radix tree] are very useful data structure to preform radix search.  
 A classic example is searching for contacts which requires to filter contacts while typing.
 
 This is a port of [Tahseen Ur Rehman original radix tree in java].
