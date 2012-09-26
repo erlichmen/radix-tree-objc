@@ -17,13 +17,22 @@
 		0E348A641613925B003CFFAE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E348A631613925B003CFFAE /* Default@2x.png */; };
 		0E348A661613925B003CFFAE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E348A651613925B003CFFAE /* Default-568h@2x.png */; };
 		0E348A691613925B003CFFAE /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E348A671613925B003CFFAE /* MainStoryboard_iPhone.storyboard */; };
-		0E348A6C1613925B003CFFAE /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E348A6A1613925B003CFFAE /* MainStoryboard_iPad.storyboard */; };
 		0E348A6F1613925B003CFFAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A6E1613925B003CFFAE /* ViewController.m */; };
 		0E348A771613925B003CFFAE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E348A761613925B003CFFAE /* SenTestingKit.framework */; };
 		0E348A781613925B003CFFAE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E348A4F1613925B003CFFAE /* UIKit.framework */; };
 		0E348A791613925B003CFFAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E348A511613925B003CFFAE /* Foundation.framework */; };
 		0E348A811613925B003CFFAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E348A7F1613925B003CFFAE /* InfoPlist.strings */; };
 		0E348A841613925C003CFFAE /* RadixTreeTesterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A831613925C003CFFAE /* RadixTreeTesterTests.m */; };
+		0E348A9616139609003CFFAE /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A8F16139609003CFFAE /* NSMutableArray+QueueAdditions.m */; };
+		0E348A9716139609003CFFAE /* RadixTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9116139609003CFFAE /* RadixTree.m */; };
+		0E348A9816139609003CFFAE /* RadixTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9316139609003CFFAE /* RadixTreeNode.m */; };
+		0E348A9916139609003CFFAE /* Visitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9516139609003CFFAE /* Visitor.m */; };
+		0E348A9C1613992C003CFFAE /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9B1613992C003CFFAE /* ContactsTableViewCell.m */; };
+		0E348A9E161399EF003CFFAE /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E348A9D161399EF003CFFAE /* AddressBook.framework */; };
+		0E348A9F16139AC5003CFFAE /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A8F16139609003CFFAE /* NSMutableArray+QueueAdditions.m */; };
+		0E348AA016139AC5003CFFAE /* RadixTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9116139609003CFFAE /* RadixTree.m */; };
+		0E348AA116139AC5003CFFAE /* RadixTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9316139609003CFFAE /* RadixTreeNode.m */; };
+		0E348AA216139AC5003CFFAE /* Visitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348A9516139609003CFFAE /* Visitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +60,6 @@
 		0E348A631613925B003CFFAE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0E348A651613925B003CFFAE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0E348A681613925B003CFFAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		0E348A6B1613925B003CFFAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0E348A6D1613925B003CFFAE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0E348A6E1613925B003CFFAE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0E348A751613925B003CFFAE /* RadixTreeTesterTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadixTreeTesterTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +68,17 @@
 		0E348A801613925B003CFFAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E348A821613925B003CFFAE /* RadixTreeTesterTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixTreeTesterTests.h; sourceTree = "<group>"; };
 		0E348A831613925C003CFFAE /* RadixTreeTesterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadixTreeTesterTests.m; sourceTree = "<group>"; };
+		0E348A8E16139609003CFFAE /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+QueueAdditions.h"; path = "radixtree/NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
+		0E348A8F16139609003CFFAE /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+QueueAdditions.m"; path = "radixtree/NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
+		0E348A9016139609003CFFAE /* RadixTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadixTree.h; path = radixtree/RadixTree.h; sourceTree = "<group>"; };
+		0E348A9116139609003CFFAE /* RadixTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadixTree.m; path = radixtree/RadixTree.m; sourceTree = "<group>"; };
+		0E348A9216139609003CFFAE /* RadixTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadixTreeNode.h; path = radixtree/RadixTreeNode.h; sourceTree = "<group>"; };
+		0E348A9316139609003CFFAE /* RadixTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadixTreeNode.m; path = radixtree/RadixTreeNode.m; sourceTree = "<group>"; };
+		0E348A9416139609003CFFAE /* Visitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Visitor.h; path = radixtree/Visitor.h; sourceTree = "<group>"; };
+		0E348A9516139609003CFFAE /* Visitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Visitor.m; path = radixtree/Visitor.m; sourceTree = "<group>"; };
+		0E348A9A1613992C003CFFAE /* ContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		0E348A9B1613992C003CFFAE /* ContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
+		0E348A9D161399EF003CFFAE /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E348A9E161399EF003CFFAE /* AddressBook.framework in Frameworks */,
 				0E348A501613925B003CFFAE /* UIKit.framework in Frameworks */,
 				0E348A521613925B003CFFAE /* Foundation.framework in Frameworks */,
 				0E348A541613925B003CFFAE /* CoreGraphics.framework in Frameworks */,
@@ -89,6 +109,7 @@
 		0E348A401613925B003CFFAE = {
 			isa = PBXGroup;
 			children = (
+				0E348A9D161399EF003CFFAE /* AddressBook.framework */,
 				0E348A551613925B003CFFAE /* RadixTreeTester */,
 				0E348A7C1613925B003CFFAE /* RadixTreeTesterTests */,
 				0E348A4E1613925B003CFFAE /* Frameworks */,
@@ -122,9 +143,10 @@
 				0E348A5E1613925B003CFFAE /* AppDelegate.h */,
 				0E348A5F1613925B003CFFAE /* AppDelegate.m */,
 				0E348A671613925B003CFFAE /* MainStoryboard_iPhone.storyboard */,
-				0E348A6A1613925B003CFFAE /* MainStoryboard_iPad.storyboard */,
 				0E348A6D1613925B003CFFAE /* ViewController.h */,
 				0E348A6E1613925B003CFFAE /* ViewController.m */,
+				0E348A9A1613992C003CFFAE /* ContactsTableViewCell.h */,
+				0E348A9B1613992C003CFFAE /* ContactsTableViewCell.m */,
 				0E348A561613925B003CFFAE /* Supporting Files */,
 			);
 			path = RadixTreeTester;
@@ -133,6 +155,7 @@
 		0E348A561613925B003CFFAE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0E348A8D1613955A003CFFAE /* RadixTree */,
 				0E348A571613925B003CFFAE /* RadixTreeTester-Info.plist */,
 				0E348A581613925B003CFFAE /* InfoPlist.strings */,
 				0E348A5B1613925B003CFFAE /* main.m */,
@@ -161,6 +184,21 @@
 				0E348A7F1613925B003CFFAE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E348A8D1613955A003CFFAE /* RadixTree */ = {
+			isa = PBXGroup;
+			children = (
+				0E348A8E16139609003CFFAE /* NSMutableArray+QueueAdditions.h */,
+				0E348A8F16139609003CFFAE /* NSMutableArray+QueueAdditions.m */,
+				0E348A9016139609003CFFAE /* RadixTree.h */,
+				0E348A9116139609003CFFAE /* RadixTree.m */,
+				0E348A9216139609003CFFAE /* RadixTreeNode.h */,
+				0E348A9316139609003CFFAE /* RadixTreeNode.m */,
+				0E348A9416139609003CFFAE /* Visitor.h */,
+				0E348A9516139609003CFFAE /* Visitor.m */,
+			);
+			name = RadixTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +277,6 @@
 				0E348A641613925B003CFFAE /* Default@2x.png in Resources */,
 				0E348A661613925B003CFFAE /* Default-568h@2x.png in Resources */,
 				0E348A691613925B003CFFAE /* MainStoryboard_iPhone.storyboard in Resources */,
-				0E348A6C1613925B003CFFAE /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +311,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E348A9F16139AC5003CFFAE /* NSMutableArray+QueueAdditions.m in Sources */,
+				0E348AA016139AC5003CFFAE /* RadixTree.m in Sources */,
+				0E348AA116139AC5003CFFAE /* RadixTreeNode.m in Sources */,
+				0E348AA216139AC5003CFFAE /* Visitor.m in Sources */,
 				0E348A5C1613925B003CFFAE /* main.m in Sources */,
 				0E348A601613925B003CFFAE /* AppDelegate.m in Sources */,
 				0E348A6F1613925B003CFFAE /* ViewController.m in Sources */,
+				0E348A9C1613992C003CFFAE /* ContactsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +327,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E348A841613925C003CFFAE /* RadixTreeTesterTests.m in Sources */,
+				0E348A9616139609003CFFAE /* NSMutableArray+QueueAdditions.m in Sources */,
+				0E348A9716139609003CFFAE /* RadixTree.m in Sources */,
+				0E348A9816139609003CFFAE /* RadixTreeNode.m in Sources */,
+				0E348A9916139609003CFFAE /* Visitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,14 +359,6 @@
 				0E348A681613925B003CFFAE /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0E348A6A1613925B003CFFAE /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0E348A6B1613925B003CFFAE /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		0E348A7F1613925B003CFFAE /* InfoPlist.strings */ = {

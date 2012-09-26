@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="s5q-Im-saA">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="hEY-pv-9uZ">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jOB-rF-AXP">
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="jOB-rF-AXP" firstAttribute="top" secondItem="hEY-pv-9uZ" secondAttribute="top" type="default" id="3Lv-AP-wdr"/>
+                                <constraint firstItem="jOB-rF-AXP" firstAttribute="leading" secondItem="hEY-pv-9uZ" secondAttribute="leading" type="default" id="Gbt-Pj-Nh2"/>
+                                <constraint firstItem="jOB-rF-AXP" firstAttribute="trailing" secondItem="hEY-pv-9uZ" secondAttribute="trailing" type="default" id="RAF-9c-qWh"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="contactsTableCell" id="5Wa-i0-mgF" customClass="ContactsTableViewCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oso-SS-V6v">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="270" id="ZCI-BE-Jn0"/>
+                                                <constraint firstAttribute="height" constant="21" id="sgf-8s-VUT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="phone number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTn-v1-Zmc">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="XZP-lG-gTj"/>
+                                                <constraint firstAttribute="width" constant="164" id="oac-sw-zyS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="yTn-v1-Zmc" firstAttribute="top" secondItem="5Wa-i0-mgF" secondAttribute="top" constant="20" type="default" id="2WW-zu-xrS"/>
+                                    <constraint firstAttribute="bottom" secondItem="oso-SS-V6v" secondAttribute="bottom" constant="20" type="default" id="IIe-tO-Pij"/>
+                                    <constraint firstItem="oso-SS-V6v" firstAttribute="leading" secondItem="yTn-v1-Zmc" secondAttribute="leading" type="default" id="N8y-5W-IyU"/>
+                                    <constraint firstItem="oso-SS-V6v" firstAttribute="centerX" secondItem="5Wa-i0-mgF" secondAttribute="centerX" type="default" id="iXv-ae-i2m"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameLabel" destination="oso-SS-V6v" id="Ftj-9C-J9e"/>
+                                    <outlet property="phoneLabel" destination="yTn-v1-Zmc" id="xaE-gu-eYY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2" id="1ek-2W-A4h"/>
+                            <outlet property="delegate" destination="2" id="xKD-XA-ofc"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="jOB-rF-AXP" id="Iqg-go-g4G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
