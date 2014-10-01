@@ -23,11 +23,14 @@
  */
 
 @interface RadixTreeNode : NSObject
-@property id value;
+@property (nonatomic, strong, readonly) NSArray *values;
 @property NSString* key;
 
 @property Boolean isReal;
 @property NSMutableArray *children;
 
 -(int)numberOfMatchingCharacters:(NSString*)key;
+- (void)addValue:(id)value;
+- (void)setValues:(NSArray *)values;
+
 @end

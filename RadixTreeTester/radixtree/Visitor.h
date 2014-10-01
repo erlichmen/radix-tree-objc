@@ -44,6 +44,8 @@ typedef void (^VisitBlock)(Visitor *visitor, NSString *key, RadixTreeNode *paren
 
 -(void)visit:(NSString *)key parent:(RadixTreeNode *)parent node:(RadixTreeNode *)node;
 
-@property (nonatomic, strong) id result;
+- (void)addResult:(id)result;
+- (void)setResults:(NSArray *)results;
+- (NSMutableArray *)results;
 
 @end

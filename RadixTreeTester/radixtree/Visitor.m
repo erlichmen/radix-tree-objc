@@ -10,6 +10,9 @@
 @interface Visitor() {
     VisitBlock _visitBlock;
 }
+
+@property (nonatomic, strong) NSMutableArray *visitorResults;
+
 @end
 
 @implementation Visitor
@@ -28,6 +31,37 @@
     if (_visitBlock) {
         _visitBlock(self, key, parent, node);
     }
+}
+
+- (void)addResult:(id)result
+{
+    [self.visitorResults addObject:result];
+}
+
+- (void)setResults:(NSArray *)results
+{
+    _visitorResults = [results mutableCopy];
+}
+
+- (NSMutableArray *)results
+{
+    if ([self.visitorResults count] == 0)
+    {
+        return nil;
+    }
+    else
+    {
+        return [self.visitorResults mutableCopy];
+    }
+}
+
+- (NSMutableArray *)visitorResults
+{
+    if (!_visitorResults)
+    {
+        _visitorResults = [NSMutableArray new];
+    }
+    return _visitorResults;
 }
 
 @end

@@ -30,31 +30,31 @@
     [trie insert:@"abcd" value:@"abcd"];
     [trie insert:@"abce" value:@"abce"];
     
-    STAssertEquals(0U, [trie searchPrefix:@"abe" recordLimit:10].count, @"");
-    STAssertEquals(0U, [trie searchPrefix:@"abd" recordLimit:10].count, @"");
+    [self assertArray:[trie searchPrefix:@"abe" recordLimit:10] hasSize:0];
+    [self assertArray:[trie searchPrefix:@"abd" recordLimit:10] hasSize:0];
 }
 
 -(void)testSearchForLeafNodesWhenOverlapExists {
     [trie insert:@"abcd" value:@"abcd"];
     [trie insert:@"abce" value:@"abce"];
     
-    STAssertEquals(1U, [trie searchPrefix:@"abcd" recordLimit:10].count, @"");
-    STAssertEquals(1U, [trie searchPrefix:@"abce" recordLimit:10].count, @"");
+    [self assertArray:[trie searchPrefix:@"abcd" recordLimit:10] hasSize:1];
+    [self assertArray:[trie searchPrefix:@"abce" recordLimit:10] hasSize:1];
 }
 
 -(void)testSearchForStringSmallerThanSharedParentWhenOverlapExists {
     [trie insert:@"abcd" value:@"abcd"];
     [trie insert:@"abce" value:@"abce"];
     
-    STAssertEquals(2U, [trie searchPrefix:@"ab" recordLimit:10].count, @"");
-    STAssertEquals(2U, [trie searchPrefix:@"a" recordLimit:10].count, @"");
+    [self assertArray:[trie searchPrefix:@"ab" recordLimit:10] hasSize:2];
+    [self assertArray:[trie searchPrefix:@"a" recordLimit:10] hasSize:2];
 }
 
 -(void)testSearchForStringEqualToSharedParentWhenOverlapExists {
     [trie insert:@"abcd" value:@"abcd"];
     [trie insert:@"abce" value:@"abce"];
     
-    STAssertEquals(2U, [trie searchPrefix:@"abc" recordLimit:10].count, @"");
+    [self assertArray:[trie searchPrefix:@"abc" recordLimit:10] hasSize:2];
 }
 
 -(void)testInsert {
@@ -101,8 +101,8 @@
     [trie insert:@"xbox 360 xbox 360" value:@"xbox 360 xbox 360"];
     [trie insert:@"360 xbox games 360" value:@"360 xbox games 360"];
     [trie insert:@"xbox xbox 361" value:@"xbox xbox 361"];
-    
-    STAssertEquals(12U, trie.count, @"");
+
+    STAssertTrue(trie.count == 12, @"");
 }
 
 -(void)testDeleteNodeWithNoChildren {
@@ -231,7 +231,7 @@
     [trie insert:@"ape" value:@"ape"];
     
     NSArray *result = [trie searchPrefix:@"app" recordLimit:10];
-    STAssertEquals(4U, result.count, @"");
+    [self assertArray:result hasSize:4];
     
     STAssertTrue([result indexOfObject:@"appleshack"] != NSNotFound, @"");
     STAssertTrue([result indexOfObject:@"appleshackcream"] != NSNotFound, @"");
@@ -247,7 +247,7 @@
     [trie insert:@"ape" value:@"ape"];
     
     NSArray *result = [trie searchPrefix:@"appl" recordLimit:3];
-    STAssertEquals(3U, result.count, @"");
+    [self assertArray:result hasSize:3];
     
     STAssertTrue([result indexOfObject:@"appleshack"] !=  NSNotFound, @"");
     STAssertTrue([result indexOfObject:@"applepie"] !=  NSNotFound, @"");
@@ -271,6 +271,25 @@
     [trie delete:@"appleshack"];
     
     STAssertTrue(trie.count == 1, @"");
+}
+
+- (void)assertArray:(NSArray *)results hasSize:(NSUInteger)size
+{
+    STAssertTrue([results count] == size, @"");
+}
+
+- (void)testFindWithVariousValuesForSingleKey
+{
+    [trie insert:@"apple" value:@"apple"];
+    [trie insert:@"apple" value:@"pie"];
+    [self assertArray:[trie find:@"apple"] hasSize:2];
+}
+
+- (void)testPrefixWithVariousValuesForSingleKey
+{
+    [trie insert:@"apple" value:@"apple"];
+    [trie insert:@"apple" value:@"pie"];
+    [self assertArray:[trie searchPrefix:@"ap" recordLimit:10] hasSize:2];
 }
 
 -(void)testComplete {

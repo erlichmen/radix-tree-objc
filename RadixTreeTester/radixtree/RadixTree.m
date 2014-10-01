@@ -95,15 +95,23 @@
 
 -(id)find:(NSString *)key {
     Visitor *visitor = [[Visitor alloc] initWithBlock:^(Visitor *visitor, NSString *key, RadixTreeNode *parent, RadixTreeNode *node) {
-
         if (node.isReal) {
-            visitor.result = node.value;
+            [node.values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [visitor addResult:obj];
+            }];
         }
     }];
     
     [self visit:key visitor:visitor];
-    
-    return visitor.result;
+    NSArray *retVal = visitor.results;
+    if ([retVal count] == 1)
+    {
+        return visitor.results[0];
+    }
+    else
+    {
+        return visitor.results;
+    }
 }
 
 -(BOOL)delete:(NSString *)key {
@@ -120,16 +128,16 @@
     void(^mergeNodes)(RadixTreeNode *parent, RadixTreeNode *child) = ^(RadixTreeNode *parent, RadixTreeNode *child){
         parent.key = [parent.key  stringByAppendingString:child.key];
         parent.isReal = child.isReal;
-        parent.value = child.value;
+        parent.values = child.values;
         parent.children = child.children;
     };
     
     Visitor *visitor = [[Visitor alloc] initWithBlock:^(Visitor *visitor, NSString *key, RadixTreeNode *parent, RadixTreeNode *node) {
         
-        visitor.result = [NSNumber numberWithBool:node.isReal];
+        [visitor addResult:[NSNumber numberWithBool:node.isReal]];
 
         // if it is a real node
-        if (visitor.result) {
+        if ([visitor.results count] > 0) {
             // If there no children of the node we need to
             // delete it from the its parent children list
             if (node.children.count == 0) {
@@ -157,11 +165,11 @@
     }];
         
     [self visit:key visitor:visitor];
-    if (visitor.result) {
+    if ([visitor.results count] > 0) {
         _count--;
     }
                         
-    return [visitor.result boolValue];
+    return [visitor.results[0] boolValue];
 }
 
 /*
@@ -199,7 +207,7 @@
             RadixTreeNode *n = [[RadixTreeNode alloc] init];
             n.key = newText;
             n.isReal = YES;
-            n.value = value;
+            [n addValue:value];
             
             [node.children addObject:n];
         }
@@ -207,11 +215,12 @@
     // there is a exact match just make the current node as data node
     else if (numberOfMatchingCharacters == key.length && numberOfMatchingCharacters == node.key.length) {
         if (node.isReal) {
-            return FALSE;
+            [node addValue:value];
+            return YES;
         }
         
         node.isReal = YES;
-        node.value = value;
+        [node addValue:value];
     }
     // This node need to be split as the key to be inserted
     // is a prefix of the current node key
@@ -219,7 +228,9 @@
         RadixTreeNode *n1 = [[RadixTreeNode alloc] init];
         n1.key = [node.key substringFromIndex:numberOfMatchingCharacters];
         n1.isReal = node.isReal;
-        n1.value = node.value;
+        [node.values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [n1 addValue:obj];
+        }];
         n1.children = node.children;
         
         node.key = [key substringToIndex:numberOfMatchingCharacters];
@@ -230,11 +241,11 @@
             RadixTreeNode *n2 = [[RadixTreeNode alloc] init];
             n2.key = [key substringFromIndex:numberOfMatchingCharacters];
             n2.isReal = YES;
-            n2.value = value;
+            [n2 addValue:value];
             
             [node.children addObject:n2];
         } else {
-            node.value= value;
+            [node addValue:value];
             node.isReal= YES;
         }
     }        
@@ -244,11 +255,12 @@
         n.key = [node.key substringFromIndex:numberOfMatchingCharacters];
         n.children = node.children;
         n.isReal = node.isReal;
-        n.value = node.value;
-        
+        [node.values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [n addValue:obj];
+        }];
         node.key = key;
         node.isReal = YES;
-        node.value = value;
+        [node addValue:value];
         
         [node.children addObject:n];
     }
@@ -272,7 +284,7 @@
 
     if (node != nil) {
         if (node.isReal) {
-            [keys addObject:node.value];
+            [keys addObjectsFromArray:node.values];
         }
         
         [self getNodes:node keys:keys recordLimit:maxLimit];
@@ -287,7 +299,7 @@
     while (queue.count > 0) {
         RadixTreeNode * node = [queue dequeue];
         if (node.isReal == YES) {
-            [keys addObject:node.value];
+            [keys addObjectsFromArray:node.values];
         }
 
         if (limit > 0 && keys.count == limit) {
@@ -322,13 +334,12 @@
 
 -(BOOL)contains:(NSString *)key {
     Visitor *visitor = [[Visitor alloc] initWithBlock:^(Visitor *visitor, NSString *key, RadixTreeNode *parent, RadixTreeNode *node) {
-        
-        visitor.result = [NSNumber numberWithBool:node.isReal];
+        [visitor addResult:[NSNumber numberWithBool:node.isReal]];
     }];
 
     [self visit:key visitor:visitor];
 
-    return [visitor.result boolValue];
+    return [visitor.results[0] boolValue];
 }
 
 /**
@@ -370,8 +381,8 @@
 	
 -(NSString*)complete:(NSString *)key node:(RadixTreeNode*)node base:(NSString *)base {
     int i = 0;
-    int keylen = key.length;
-    int nodelen = node.key.length;
+    NSUInteger keylen = key.length;
+    NSUInteger nodelen = node.key.length;
 
     while (i < keylen && i < nodelen) {
         if ([key characterAtIndex:i] != [node.key characterAtIndex:i]) {
@@ -409,7 +420,7 @@
     }
     
     if (node.isReal) {
-        [f appendFormat:@"%@[%@]*", node.key,  node.value];
+        [f appendFormat:@"%@[%@]*", node.key,  node.values];
     }
     else {
         [f appendFormat:@"%@", node.key];
