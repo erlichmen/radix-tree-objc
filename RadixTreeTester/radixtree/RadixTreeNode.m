@@ -24,6 +24,12 @@
 
 #import "RadixTreeNode.h"
 
+@interface RadixTreeNode ()
+
+@property (nonatomic, strong) NSMutableArray *nodeValues;
+
+@end
+
 @implementation RadixTreeNode
     /**
      * intailize the fields with default values to avoid null reference checks
@@ -51,6 +57,41 @@
     }
     
     return numberOfMatchingCharacters;
+}
+
+- (NSMutableArray *)nodeValues
+{
+    if (!_nodeValues)
+    {
+        _nodeValues = [NSMutableArray new];
+    }
+    return _nodeValues;
+}
+
+- (void)addValue:(id)value
+{
+    [self.nodeValues addObject:value];
+}
+
+- (void)setValues:(NSArray *)values
+{
+    self.nodeValues = [values mutableCopy];
+}
+
+- (NSArray *)values
+{
+    if ([self.nodeValues count] == 1)
+    {
+        return @[self.nodeValues[0]];
+    }
+    else if ([self.nodeValues count] == 0)
+    {
+        return nil;
+    }
+    else
+    {
+        return [self.nodeValues copy];
+    }
 }
 
 -(NSString *)description {
